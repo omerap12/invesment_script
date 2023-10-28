@@ -7,6 +7,5 @@ class Omberbag:
         for item in self.securities.keys():
             print(f'{item} ---> {int(self.precentage[item]*quantity)}')
 
-    def print_securities(self) -> None:
-        for key,value in self.securities.items():
-            print(f"{key} -> {value}")
+    def print_securities(self) -> str:
+        print("".join(f"{key}: {value}\n" for key,value in self.securities.items()))

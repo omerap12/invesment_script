@@ -1,15 +1,18 @@
 from Omerbag import Omberbag
 import sys
+import argparse
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} MONEY")
-        exit(1)
-    try:
-        money = int(sys.argv[1])
-    except Exception as e:
-        print("Please enter valid money amount")
-        print(e)
-        exit(2)
     money_bag = Omberbag()
-    money_bag.money_to_invest(money)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m',"--MONEY", help="Display the amount of money to invest in eash security", type=int)
+    parser.add_argument('-info',"--INFO", help="Show securities info", action='store_true')
+    args = parser.parse_args()
+    
+    if args.MONEY:
+        money_bag.money_to_invest(args.MONEY)
+    if args.INFO:
+        money_bag.print_securities()
+
+    
+    
